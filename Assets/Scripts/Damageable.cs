@@ -7,6 +7,9 @@ public class Damageable : MonoBehaviour
     public UnityEvent damageableDeath;
     public UnityEvent<int, int> healthChanged;
 
+    private EndScreenManager endScreenManager; 
+
+
     private Animator animator;
 
     [SerializeField]
@@ -108,4 +111,11 @@ public class Damageable : MonoBehaviour
         }
         return false;
     }
+
+
+    public void SetEndScreenManager(EndScreenManager manager)
+    {
+        endScreenManager = manager;
+    }
 }
+

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
+    public EndScreenManager endScreenManager;
 
     public float CurrentMoveSpeed { get
         {
@@ -116,6 +117,11 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
+
+        if (damageable != null && endScreenManager != null)
+        {
+            damageable.SetEndScreenManager(endScreenManager);
+        }
     }
 
     private void FixedUpdate()
@@ -197,5 +203,6 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+
     }
 }
